@@ -19,12 +19,12 @@ app.use('/', api.authenticate);
 app.use('/usuarios', api.usuarios);
 app.use('/pessoas', api.pessoas);
 
-app.get('/ping', (req, res) => {
+app.get('*', (req, res) => {
     res.send('Service connected...')
 })
 
-var port = process.env.PORT || process.env.OPENSHIFT_NODEJS_PORT || 8080,
-    ip = process.env.IP || process.env.OPENSHIFT_NODEJS_IP || '0.0.0.0';
+var port = process.env.PORT || 3000,
+    ip = process.env.IP || '0.0.0.0';
 
 app.listen(port, ip);
 console.log('Server running on http://%s:%s', ip, port);
